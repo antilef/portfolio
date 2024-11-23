@@ -8,8 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#0C0A3E",
+      },
+      accentColor:"#7B1E71",
+      fontFamily: {
+        mono: ['JetBrains Mono', 'monospace'], // Add your custom font here
       },
     },
   },
