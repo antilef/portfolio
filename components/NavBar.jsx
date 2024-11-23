@@ -52,7 +52,7 @@ const NavBar = () => {
                         })
 
                     }
-                    <li>
+                    <li className="m-auto">
                         <ResumeButton marginClass={'mx-8'}/>
                     </li>
                     
