@@ -9,8 +9,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#0C0A3E",
+        secondary: "#7B1E71",
+        "snow" : "#FFFAFA"
       },
-      accentColor:"#7B1E71",
       fontFamily: {
         mono: ['JetBrains Mono', 'monospace'], // Add your custom font here
       },
