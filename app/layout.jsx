@@ -1,5 +1,5 @@
-import localFont from "next/font/local";
 import {JetBrains_Mono} from 'next/font/google'
+import NavBar from "../components/NavBar";
 import "./globals.css";
 
 
@@ -16,7 +16,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${JetBrainsMono.variable} antialiased`}
       >
-        {children}
+        <NavBar/>
+        <main className='flex flex-col max-w-screen-xl mx-auto'>
+          {children}
+        </main>
       </body>
     </html>
   );
