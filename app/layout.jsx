@@ -1,6 +1,7 @@
 import {JetBrains_Mono} from 'next/font/google'
 import NavBar from "../components/NavBar";
 import "./globals.css";
+import Footer from '@/components/Footer';
 
 
 const JetBrainsMono = JetBrains_Mono({ subsets: ['latin'],variable: "--jet-brains-mono"})
@@ -17,9 +18,11 @@ export default function RootLayout({ children }) {
         className={`${JetBrainsMono.variable} antialiased`}
       >
         <NavBar/>
-        <main className='flex flex-col max-w-screen-xl mx-auto'>
+        <main className='flex flex-col max-w-screen-xl mx-auto h-screen p-10'>
           {children}
+          <Footer/>
         </main>
+    
       </body>
     </html>
   );
