@@ -1,18 +1,56 @@
+'use client'
+
+import { useState } from "react"
+
+
 export default function Contact(){
+
+    const [formData,setFormData] = useState({firstname: '',lastname: '',email: '', phoneNumber:'',subject: '',message: ''})
+    const [status,setStatus] = useState('status')
+
+    const handleChange = (e) => {
+        const { name,value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setStatus('Sending...')
+        
+
+        try{
+            const response = await fetch('/api/send-email',{
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+
+            if (response.ok) {
+                setStatus('Message sent successfully!');
+              } else {
+                setStatus('Failed to send message. Please try again.');
+            }
+        }catch(e){
+            setStatus('Something was wrong. Please try again')
+        }
+
+    }
+
+
     return (
         <section className="flex flex-col lg:flex-row w-full gap-8">
             <div className="bg-contrast w-[50%] rounded-lg p-10">
                 <h1 className="text-5xl font-bold text-secondary py-10" >Let's build something</h1>
                 <p className="text-slate-300 py-4">I'm loved to respond your message</p>
                 <form className="grid grid-cols-2 [&>input]:bg-primary [&>input]:rounded-md [&>input]:px-4 [&>input]:py-4 [&>input]:font-semi-bold gap-4  [&>input]:border-2" >
-                    <input className="focus:outline-none focus:border-secondary" type="text" placeholder="Firstname" />
-                    <input className="focus:outline-none focus:border-secondary" type="text" placeholder="Lastname" />
-                    <input className="focus:outline-none focus:border-secondary" type="text" placeholder="Email" />
-                    <input className="focus:outline-none focus:border-secondary" type="text" placeholder="Phone number" />
-                    <input className="col-span-2 focus:outline-none focus:border-secondary" type="text" placeholder="Subject " />
-                    <textarea type="text" className="font-semi-bold rounded-md bg-primary col-span-2 h-64 py-2 focus:border-secondary focus:outline-none border-2" placeholder="Type your message here " />
+                    <input required onChange={handleChange} className="focus:outline-none focus:border-secondary" name='firstname' value={formData.firstname} type="text" placeholder="Firstname" />
+                    <input onChange={handleChange}  className="focus:outline-none focus:border-secondary" name='lastname' value={formData.lastname} type="text" placeholder="Lastname" />
+                    <input required onChange={handleChange}  className="focus:outline-none focus:border-secondary" name='email' value={formData.email} type="email" placeholder="Email" />
+                    <input onChange={handleChange}  className="focus:outline-none focus:border-secondary" name='phoneNumber' type="text" value={formData.phoneNumber} placeholder="Phone number" />
+                    <input onChange={handleChange} className="col-span-2 focus:outline-none focus:border-secondary" name='subject' type="text" value={formData.subject} placeholder="Subject " />
+                    <textarea required onChange={handleChange}  type="text" value={formData.message} name='message' className="font-semi-bold rounded-md bg-primary col-span-2 h-64 py-2 focus:border-secondary focus:outline-none border-2" placeholder="Type your message here " />
                 </form>
-                <button className="text-slate-300 p-4 bg-secondary rounded-lg my-8" >Send Message</button>
+                <button onClick={handleSubmit} className="text-slate-300 p-4 bg-secondary rounded-lg my-8" >Send Message</button>
             </div>
 
             {/* contact */}
