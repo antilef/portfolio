@@ -36,7 +36,7 @@ const NavBar = () => {
         <>
         <nav className=" hidden lg:flex justify-between py-10 w-full ">
             <div className="px-8">
-                <p className="text-5xl border-4">FI</p>
+                <p className="text-5xl border-4">FA</p>
             </div>
             
             <div className="flex">
