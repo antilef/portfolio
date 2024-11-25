@@ -11,12 +11,12 @@ const routes = [
         name: 'home'
     },
     {
-        path: '/services',
-        name: 'Services'
+        path: '/resume',
+        name: 'Resume'
     },
     {
-        path: '/experience',
-        name: 'Experience'
+        path: '/work',
+        name: 'Work'
     },
     {
         path: '/contact',
