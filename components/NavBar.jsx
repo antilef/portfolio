@@ -32,20 +32,30 @@ const NavBar = () => {
 
     const toggleButton = () => { setIsOpen(!isOpen)}
 
+    const onToggleMenu= (e) =>{
+        toggleButton()
+        const navLinks = document.querySelector('.nav-links')
+        e.name = e.name === 'menu' ? 'close' : 'menu'
+        navLinks.classList.toggle('top-[4%]')
+    }
+
     return (
         <>
-        <nav className=" hidden lg:flex justify-between py-10 w-full ">
-            <div className="px-8">
+        <nav className="flex justify-between w-[95%]">
+            <div className="px-8 pt-10">
                 <p className="text-5xl border-4">FA</p>
             </div>
             
-            <div className="flex">
-                <ul className="flex gap-8">
+            <div className="nav-links duration-500 md:static 
+                        absolute md:min-h-fit min-h-[60vh]
+                        left-0 top-[-100%] md:w-auto max-md:bg-primary w-full 
+                        flex items-center px-auto z-10 md:justify-center">
+                <ul className="flex md:flex-row flex-col mx-auto gap-8">
 
                     {
                         routes.map((route,index) =>{
                             return (
-                                <li key={index} className={ ` ${route.path === currentPath && "border-b-2 border-secondary" } rounded-md h-6 m-auto hover:bg-secondary font-bold`} >
+                                <li  key={index} className={ ` ${route.path === currentPath && "border-b-2 border-secondary" } rounded-md h-6 m-auto hover:bg-secondary font-bold`} >
                                     <Link href={route.path} >{route.name} </Link>
                                 </li>     
                             )
@@ -53,87 +63,24 @@ const NavBar = () => {
 
                     }
                     <li className="m-auto">
-                        <ResumeButton marginClass={'mx-8'}/>
+                        <ResumeButton />
                     </li>
                     
                 </ul>
+                    
                 
+            </div>
+            <div className="md:hidden mt-10" >
+            <a onClick={onToggleMenu} 
+                                name="menu" className="text-3xl cursor-pointer 
+                                                    md:hidden text-white">{
+                                                        isOpen ? <i className="fa-solid fa-xmark"></i> : <i className="fa-solid fa-bars"></i>
+                                                    }
+                        </a>
             </div>
            
         </nav>
-        <nav className="lg:hidden flex justify-between w-full p-10">
-            <div className={` ${isOpen? 'hidden':'flex'}`} >
-                <p className="text-4xl border-2 ">FI</p>
-            </div>
-            <div className="flex items-center ml-auto cursor-pointer">
-                <button type="button" onClick={toggleButton}>
-                    {
-                        isOpen ? 'Close' : (
-                            <svg 
-                              className="w-6 h-6" 
-                              aria-hidden="true" 
-                              xmlns="http://www.w3.org/2000/svg" 
-                              fill="none" 
-                              viewBox="0 0 17 14"
-                            >
-                              <path 
-                                stroke="currentColor" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth="2" 
-                                d="M1 1h15M1 7h15M1 13h15"
-                              />
-                            </svg>
-                          )
-                    }
-                
-                </button>
-            </div>
-            <div className={`lg:hidden ${isOpen ? 'flex flex-col': 'hidden'} fixed top-0 left-0 w-screen bg-gray-800 z-30 items-center 
-            transition-all duration-500 ease-in-out transform ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-100%]'}`}>    
-                <ul>
-                    {
-                        routes.map((route,index) =>{
-                            return (
-                                <li onClick={toggleButton} key={index} className={ `text-center my-10 m-auto font-bold`} >
-                                    <Link href={route.path} >{route.name} </Link>
-                                </li>     
-                            )
-                        })
-                    }
-
-                    <li>
-                        <ResumeButton marginClass={'mx-8 mb-10'}/>
-                    </li>
-
-                    <li className="text-center mb-10">
-                        <button type="button" onClick={toggleButton}>
-                        {
-                            isOpen ? 'Close' : (
-                                <svg 
-                                className="w-6 h-6" 
-                                aria-hidden="true" 
-                                xmlns="http://www.w3.org/2000/svg" 
-                                fill="none" 
-                                viewBox="0 0 17 14"
-                                >
-                                <path 
-                                    stroke="currentColor" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    strokeWidth="2" 
-                                    d="M1 1h15M1 7h15M1 13h15"
-                                />
-                                </svg>
-                            )
-                        }
-                        </button>
-                    </li>
-                </ul> 
-                
-            </div>
-            
-        </nav>
+    
        
         </>
     )
