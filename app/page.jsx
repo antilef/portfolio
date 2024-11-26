@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="grow">
-      <p className="font-bold text-secondary text-2xl">Hi, I'm </p>
+      <p className="font-bold text-secondary text-2xl">Hi, I&apos;m </p>
         <h1 className="text-7xl font-bold text-white py-4 mt-10"> Francisco Antilef.</h1>
         <p className="text-6xl text-snow font-bold py-2 mb-10 opacity-50"> Software Engineer.</p>
         <p className="text-xl max-w-screen-md" >Enthusiastic modern developer with <span className="text-secondary">3+ </span> years of professional software development experience and over 6 years of coding expertise.

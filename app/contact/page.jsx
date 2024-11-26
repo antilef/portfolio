@@ -40,8 +40,8 @@ export default function Contact(){
     return (
         <section className="flex flex-col lg:flex-row w-full gap-8">
             <div className="bg-contrast lg:w-[50%] md:w-[100%] rounded-lg p-10">
-                <h1 className="text-5xl font-bold text-secondary py-10" >Let's build something</h1>
-                <p className="text-slate-300 py-4">I'm loved to respond your message</p>
+                <h1 className="text-5xl font-bold text-secondary py-10" >Let&apos;s build something</h1>
+                <p className="text-slate-300 py-4">I&apos;m loved to respond your message</p>
                 <form className="grid grid-cols-2 [&>input]:bg-primary [&>input]:rounded-md [&>input]:px-4 [&>input]:py-4 [&>input]:font-semi-bold gap-4  [&>input]:border-2" >
                     <input required onChange={handleChange} className="focus:outline-none focus:border-secondary" name='firstname' value={formData.firstname} type="text" placeholder="Firstname" />
                     <input onChange={handleChange}  className="focus:outline-none focus:border-secondary" name='lastname' value={formData.lastname} type="text" placeholder="Lastname" />
