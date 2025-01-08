@@ -15,13 +15,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${JetBrainsMono.variable} antialiased`}
+        className={`${JetBrainsMono.variable} antialiased h-screen flex flex-col`}
       >
-        <NavBar/>
-        <main className='flex flex-col max-w-screen-xl mx-auto h-screen p-10'>
+        <header>
+          <NavBar/>
+        </header>
+        
+        <main className='flex-grow flex flex-col max-w-screen-xl mx-auto'>
           {children}
-          <Footer/>
+          
         </main>
+        <footer className='max-w-screen-xl mx-auto'>
+          <Footer/>
+        </footer>
     
       </body>
     </html>
