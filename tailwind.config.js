@@ -13,7 +13,7 @@ module.exports = {
           DEFAULT:"#00ff99",
           hover:"#00e187"
         },
-        secondary: "#7B1E71",
+        secondary: "#45cc2d",
         contrast:"#2d2d36",
         "snow" : "#FFFAFA"
       },
